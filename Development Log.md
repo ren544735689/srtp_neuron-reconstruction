@@ -2,7 +2,7 @@
 
 
 
-## 3.29
+## 29 MAR 2020
 
 #### Wen Ziqi:
 
@@ -10,7 +10,7 @@ Asked senior Zhang Han about the algorithms needed for the visualization of neur
 
 
 
-## 4.3
+## 3 APR 2020
 
 #### Internal meeting:
 
@@ -23,7 +23,7 @@ Created the [SRTP-Repository "srtp_neuron_reconstruction"](https://github.com/re
 
 
 
-## 4.4
+## 4 APR 2020
 
 #### Wen Ziqi:
 
