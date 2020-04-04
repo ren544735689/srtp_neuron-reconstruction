@@ -19,7 +19,7 @@ Asked senior Zhang Han about the algorithms needed for the visualization of neur
 
 #### Ren Haoran:
 
-Created the [SRTP-Repository "srtp_neuron_reconstruction"](https://github.com/ren544735689/srtp_neuron-reconstruction) on GitHub.
+Created [the SRTP-Repository "srtp_neuron_reconstruction"](https://github.com/ren544735689/srtp_neuron-reconstruction) on GitHub.
 
 
 
