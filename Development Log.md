@@ -4,7 +4,7 @@
 
 ## 3.29
 
-##### Wen Ziqi:
+#### Wen Ziqi:
 
 Asked senior Zhang Han about the algorithms needed for the visualization of neurons and the reconstruction of neuron structures. And he provided two related papers.
 
@@ -12,12 +12,12 @@ Asked senior Zhang Han about the algorithms needed for the visualization of neur
 
 ## 4.3
 
-##### Internal meeting:
+#### Internal meeting:
 
 1. According to the suggestion from our tutor, tasks of this week was assigned, which are creating repository on GitHub and modifying the opening slides.
 2. Specified the division of labor in the weekend. Ren Haoran is to be in charge of the repository, whereas Yuan Haoran and Wen Ziqi are responsible for modifying the slides. To modify the slides, Yuan Haoran is supposed to improve the hierarchy of the project background research, and Wen Ziqi is responsible for revising the research plan.
 
-##### Ren Haoran:
+#### Ren Haoran:
 
 Created the [SRTP-Repository "srtp_neuron_reconstruction"](https://github.com/ren544735689/srtp_neuron-reconstruction) on GitHub.
 
@@ -25,7 +25,7 @@ Created the [SRTP-Repository "srtp_neuron_reconstruction"](https://github.com/re
 
 ## 4.4
 
-##### Wen Ziqi:
+#### Wen Ziqi:
 
 Consulted some related papers and made extensive modification of the opening slides.
 
@@ -34,7 +34,7 @@ Consulted some related papers and made extensive modification of the opening sli
 
 Drawbacks: In the 10th page of the slides, I can't specify the solution to evaluate the efficiency of the web tool, and how to choose a feasible reconstruction algorithm, on the grounds that I still know little about the specific content of the reconstruction algorithm.
 
-##### Yuan Haoran:
+#### Yuan Haoran:
 
 1. According to some related papers and inspired by some projects found on GitHub, I improved the hierarchy of the project background research, and made it more concise.
 2. Combined the slides modified by Wen Ziqi and me, and unified the style of the slides.
