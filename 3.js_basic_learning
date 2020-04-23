@@ -1,0 +1,173 @@
+# 4.23
+## three.js 的基础用法以及代码
+
+### 1. three.js 的框架
+> 一个three.js的程序拥有场景，相机，渲染器三个最顶层的总对象；
+ 场景对象又封为网络模型和光照两个子对象；
+网络模型由几何体对象和材质对象组成；
+完成上述三种对象的实例化后，通过渲染即可显示相应的图像。
+
++ 在开始定义顶层对象之前需要实例化场景对象，代码如下
+```php
+var scene = new THREE.Scene();
+```
+
+### 2. 定义网络模型
+
++ 实例化几何体对象，调用不同的几何体构造函数和相应参数的赋值；
+```php
+//长方体 参数：长，宽，高
+var geometry = new THREE.BoxGeometry(100, 100, 100);
+// 球体 参数：半径60  经纬度细分数40,40
+var geometry = new THREE.SphereGeometry(60, 40, 40);
+// 圆柱  参数：圆柱面顶部、底部直径50,50   高度100  圆周分段数
+var geometry = new THREE.CylinderGeometry( 50, 50, 100, 25 );
+// 正八面体
+var geometry = new THREE.OctahedronGeometry(50);
+// 正十二面体
+var geometry = new THREE.DodecahedronGeometry(50);
+// 正二十面体
+var geometry = new THREE.IcosahedronGeometry(50);
+```
+生成的几何体对象默认处于坐标（0，0，0）的位置，可以通过相应的网络模型方法来移动几何体（见后方网络模型的实例化）
+
++ 实例化材质
+
+网络材质有多种不同的模型，对应不同的精度和性能，每一种模型的构造函数以及可选参数也不同，参数数量非常多，代码中只涉及一部分，具体可见官方文档，构造函数即相应的网络材质的名称，大致有以下几种：
+> + **MeshLambertMaterial**：该材质使用基于非物理的Lambertian模型来计算反射率。 这可以很好地模拟一些表面（例如未经处理的木材或石材），但不能模拟具有镜面高光的光泽表面（例如涂漆木材）。
+>+ **MeshPhongMaterial**:一种用于具有镜面高光的光泽表面的材质。
+>+ **MeshStandardMaterial**:一种基于物理的标准材质，使用Metallic-Roughness工作流程。
+>+ **MeshPhysicalMaterial**:MeshStandardMaterial的扩展，能够更好地控制反射率
+
+代码如下：
+```php
+var sphereMaterial=new THREE.MeshLambertMaterial({
+    color:0xff0000,
+    opacity:0.7,         //透明度设置
+    transparent:true     //是否开启透明，默认false
+});//材质对象
+```
+参数也可以通过属性修改：
+```php
+material.opacity = 0.5 ;
+material.transparent = true ;
+```
+
+另一种材质模型：
+```php
+var sphereMaterial=new THREE.MeshPhongMaterial({
+    color:0x0000ff,
+    specular:0x4488ee,   //球体网格模型的高光颜色
+    shininess:12        //光照强度的系数
+});//材质对象
+```
+关于光照条件的渲染需要一定的图形学知识。
+
+实例化了材质对象和几何体对象后就可以实例化网络模型对象，代码如下：
+```php
+var mesh1 = new THREE.Mesh(geometry1, material1); //利用相应的几何体和材质来实例化网格模型对象Mesh
+scene.add(mesh1); //网格模型添加到场景中
+```
+
+通过移动模型的方法来移动物体：
+```php
+mesh1.translateY(120); //球体网格模型沿Y轴正方向平移，X，Z轴同理
+//或通过以下方式直接设置
+mesh1.position.set(120,0,0);
+//旋转
+mesh.rotateY(0.01);//每次绕y轴旋转0.01弧度
+```
+
++ 辅助三维坐标系AxisHelper
+```php
+var axisHelper = new THREE.AxisHelper(250);
+scene.add(axisHelper);
+```
+
+### 3.定义光照模型
+光照对象有多种类型：
+>AmbientLight：环境光
+PointLight：点光源
+DirectionalLight：平行光，比如太阳光
+SpotLight：聚光源
+
+实例化代码：
+```php
+//环境光    环境光颜色与网格模型的颜色进行RGB进行乘法运算
+var ambient = new THREE.AmbientLight(0x444444);
+scene.add(ambient);
+
+//点光源
+var point = new THREE.PointLight(0xffffff);
+point.position.set(400, 200, 300); //点光源位置
+scene.add(point); //点光源添加到场景中
+```
+
+### 4.定义相机对象
+直接从代码中学习：
+```php
+var width = window.innerWidth; //窗口宽度
+var height = window.innerHeight; //窗口高度
+var k = width / height; //窗口宽高比
+var s = 200; //三维场景显示范围控制系数，系数越大，显示的范围越大
+//创建相机对象
+var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
+camera.position.set(200, 300, 200); //设置相机位置
+camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
+```
+
+### 5. 定义渲染器对象
+```php
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(width, height);//设置渲染区域尺寸
+renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
+document.body.appendChild(renderer.domElement); //body元素中插入canvas对象
+//执行渲染操作   指定场景、相机作为参数
+renderer.render(scene, camera);
+```
+
+### 6. 如何让模型保持运动
+利用函数`requestAnimationFrame()`;
+requestAnimationFrame()参数是将要被调用函数的函数名，requestAnimationFrame()调用一个函数不是立即调用而是向浏览器发起一个执行某函数的请求， 什么时候会执行由浏览器决定，一般默认保持60FPS的频率。
+
+通过以下代码实现物体的旋转,利用时间来控制旋转幅度，是为了更好地实现迅速地转动
+```php
+let T0 = new Date();//上次时间
+function render() {
+        let T1 = new Date();//本次时间
+        let t = T1-T0;//时间差
+        T0 = T1;//把本次时间赋值给上次时间
+        requestAnimationFrame(render);
+        renderer.render(scene,camera);//执行渲染操作
+        mesh.rotateY(0.001*t);//旋转角速度0.001弧度每毫秒
+    }
+render();
+```
+
+### 7.操作场景
+
+首先需要引入OrbitControls.js控件
+```php
+ <script src="./three.js-master/examples/js/controls/OrbitControls.js"></script>
+```
+通过该控件的实例化，可以将相机对象设置成鼠标运动所关联的对象，每当鼠标状态改变，相应的参数将对相机发生改变，同时只要再次进行渲染，就能体现出相机随鼠标移动的效果。
+
+再次渲染的方式有两种，一种是鼠标监听事件，如下，每次发生鼠标状态的改变都会触发渲染
+```php
+function render() {
+  renderer.render(scene,camera);//执行渲染操作，注意这里只需要简单渲染即可
+}
+var controls = new THREE.OrbitControls(camera,renderer.domElement);//创建控件对象
+controls.addEventListener('change', render);//监听鼠标、键盘事件
+```
+
+或是利用周期性渲染，这种情况下就不需要使用监听事件(如果使用会有冲突)
+```php
+function render() {
+  renderer.render(scene,camera);//执行渲染操作
+  // mesh.rotateY(0.01);//每次绕y轴旋转0.01弧度
+  requestAnimationFrame(render);//请求再次执行渲染函数render
+}
+render();
+var controls = new THREE.OrbitControls(camera);//创建控件对象
+```
