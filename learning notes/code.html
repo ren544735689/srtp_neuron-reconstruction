@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+    <!-- Let the Explore know the information is from html -->
+    <!-- also can be deleted -->
+
+<html lang="en">
+    <!-- the begin of html -->
+    <!-- lang="zh" or lang = "en" means the language -->
+<head>
+    <!-- 提供有关文档内容和标注信息 -->
+    <!-- the content is called "元素句" -->
+    <meta charset="UTF-8">
+    <!-- 编码 -->
+    <title>mytitle</title>
+    <!-- html标题 -->
+</head>
+<body>
+    <h1>标题大小</h1>
+    <h2>标题大小</h2>
+    <br>    <!-- \n -->
+    啥都没有表示直接跟在后面
+    <p>"p" means xxx\n</p>
+
+    <p>超链接_test：</p>
+    <p><a href="https://www.bilibili.com/video/BV1ds411r7o7?p=4">test_html_1</a></p>
+    <!-- this line shows different attribute could be nested -->
+    <a href="test_html.html">local_html</a><!-- local link must store in the same file -->
+    <a href="https://www.bilibili.com/video/BV1ds411r7o7?p=4" target="_blank">test_html_2</a>
+    <!-- open a new web -->
+    <a href="https://www.bilibili.com/video/BV1ds411r7o7?p=4" target="_self">test_html_2</a>
+    <!-- change the cuttent web, similar to default "test_html_1 " -->
+    <p>超链接_test_end</p>
+
+    <p>文本_test（css代替）</p>
+    <b>加粗</b>
+    <em>斜体</em>
+    <u>下划线（不推荐使用）</u>
+    <s>划线</s>
+    <p>文本_test_end</p>
+    
+    <p>表格_test：</p>
+    <table border="2px">
+         <!--CSS代替 -->
+        <tr>
+            <th>name</th>
+            <!-- th 加粗居中 -->
+            <td rowspan="2">age</td>
+            <td>score</td>
+        </tr>
+        <thead>
+        <tr>
+            <td>Ronaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+            <td colspan="2">20</td>
+        </tr>
+        </thead>
+    </table>
+    <p>表格_test_end：</p>
+
+    <p>列表_test</p>
+    <ol type="A" reversed>
+        <li>aaa</li>
+        <ol>
+            <li>aaa</li>
+            <li>aaa</li>
+        </ol>
+        <li>aaa</li>
+        <li>aaa</li>
+    </ol>
+    <ul>
+        <li>a</li>
+        <li>a</li>
+    </ul>
+    <p>列表_test_end</p>
+
+    <p>表单_test</p>
+    <form>
+        <input type="text" value="initial_input" readonly>
+        <input type="password" placeholder="password"  maxlength="10">
+        <input placeholder="hold_input" size="50">
+        <br>
+        <textarea rows="20" cols="50">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
+        <br>
+
+        <input type="button" value="button">
+        <button>button</button>
+        <!-- used for javascript and is bandaged with event -->
+        <input type="submit" value="submit">
+        <br>
+        <input type="range" min="-111" max="222" step="11" value="-111">
+        <input type="number" min="0" max="100" step="10" value="0">
+        <br>
+
+        <input type="checkbox">check
+        <p>who is he?</p>
+        <input type="radio" name="he">name1
+        <input type="radio" name="he">name2
+        <input type="radio" name="he">name3
+        <!-- all the "name" must be the same, which means a multiplexier -->
+
+        <br>
+        select:
+        <select>
+            <option>A</option>
+            <option>B</option>
+            <option>c</option>
+            <option>D</option>
+        </select>
+        <br>
+
+        <input list="test_list">
+        <datalist id="test_list">
+            <option>A</option>
+            <option>B</option>
+            <option>c</option>
+            <option>D</option>
+        </datalist>
+    </form>
+    <br>
+
+    <!-- The following tyoe could automatically check data type when it is submitted -->
+    <input type="tel">
+    <input type="email">
+    <input type="url">
+
+    <input type="date">
+    <input type="color">
+    <input type="image" src="test.bmp" width="80px" height="40px">
+    <!-- Attention! when you click in this image, url will show the pixiv x,y-->
+    <img src="test.bmp" width="128px" height="40px" alt="当图片显示不正确时备用显示名称" usemap="#map1">
+    <!-- 创建分区相应图 -->
+    <map name="map1">
+        <area href="url1.html" shape="rect" coords="左，上，右，下" target="_blank">
+        <area href="url2.html" shape="circle" coords="x，y，r">
+        <area shape="poly" coords="(至少六个点)，每个点表示一个顶点">
+        <area shape="default">
+    </map>
+    <video src="" height="" autoplay controls preload="" loop poster="123.bmp">
+        <source src="132.mp4" type="video/mp4">
+        <source src="123.ogv" type="video/ogg">
+    </video>
+    <input type="file" multiple>
+    <p>表单_test_end</p>
+
+</body>
+</html>
